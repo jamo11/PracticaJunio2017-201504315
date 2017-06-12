@@ -1,6 +1,8 @@
 from xml.dom import minidom
-import Listas
+import listas
+import usuarios
 
+cola = listas.cola()
 class archivo:
     def __init__(self):
         self.xml = None
@@ -18,15 +20,11 @@ class archivo:
 
         itemlist3 = xml.getElementsByTagName("operacion")
         for i in itemlist3:
-            Listas.cola.encolar(i.firstChild.nodeValue.strip())
-
-
+            cola.encolar(i.firstChild.nodeValue.strip())
+        global new
+        new = cola
 
     def imprimircola(self):
-        Listas.cola.recorrer()
+        listas.cola.recorrer()
 
-# C:\Users\Andres\Desktop\UNIVERSIDAD\EDD\prueba_edd.archivo
-
-archivo = archivo()
-archivo.leerarchivo(raw_input("ruta"))
-archivo.imprimircola()
+# C:\Users\Andres\Desktop\UNIVERSIDAD\EDD\prueba_edd.xml
